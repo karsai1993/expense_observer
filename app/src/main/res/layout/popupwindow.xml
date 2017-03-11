@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_background">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you sure to clear all you have purchased?"
+        android:gravity="center"
+        android:id="@+id/question"
+        android:textColor="@color/white"
+        android:layout_alignParentTop="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="Yes"
+            android:background="@drawable/yes_button_handler"
+            android:textColor="@color/white"
+            android:id="@+id/yes"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="No"
+            android:id="@+id/no"
+            android:textColor="@color/white"
+            android:background="@drawable/no_button_handler"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

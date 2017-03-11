@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Expense Observer</string>
+    <string name="test_string" ><![CDATA[<font color="%1$s"><b>Test/b></font>]]> String</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/showcharticon"
+        android:icon="@drawable/ic_action_pie_chart"
+        app:showAsAction="always"
+        android:title="SHOW">
+    </item>
+    <item
+        android:id="@+id/storeicon"
+        android:icon="@drawable/ic_action_storage"
+        app:showAsAction="always"
+        android:title="SHOW">
+    </item>
+    <item
+        android:id="@+id/saveicon"
+        android:icon="@drawable/ic_action_save"
+        app:showAsAction="always"
+        android:title="SHOW">
+    </item>
+</menu>

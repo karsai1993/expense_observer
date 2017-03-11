@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/done"
+        android:id="@+id/categorydecider">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtsearch"
+            android:hint="Category name..."
+            android:textColor="@color/item_comment_and_category"
+            android:textColorHint="@color/item_comment_and_category"
+            android:inputType="textCapSentences" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listview"
+            android:layout_below="@id/txtsearch"
+            android:layout_above="@+id/comment"
+            android:divider="@color/item_devider"
+            android:dividerHeight="1dp">
+        </ListView>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Comment..."
+            android:id="@+id/comment"
+            android:textColor="@color/item_comment_and_category"
+            android:textColorHint="@color/item_comment_and_category"
+            android:layout_above="@+id/price"
+            android:inputType="textCapSentences"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            android:layout_alignParentBottom="true"
+            android:hint="Price [HUF]"
+            android:textColor="@color/item_exp"
+            android:textColorHint="@color/item_exp"
+            android:inputType="number"/>
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/add_button_handler"
+        android:textColor="@color/white"
+        android:text="DONE"
+        android:id="@+id/done"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clearcategoryies"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/cat_button_handler"
+        android:textColor="@color/white"
+        android:text="CLEAR"/>
+</RelativeLayout>
