@@ -19,10 +19,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by Edina on 2017. 01. 24..
- */
-
 public class CategoryActivity extends AppCompatActivity {
     String name = "";
     String value = "";
@@ -59,7 +55,6 @@ public class CategoryActivity extends AppCompatActivity {
 
         valueName = (TextView)findViewById(R.id.name_value);
         valueName.setText(name);
-        //valueName.startAnimation(AnimationUtils.loadAnimation(CategoryActivity.this,android.R.anim.slide_in_left));
         valueExpense = (TextView)findViewById(R.id.expense_value);
         valueExpense.setText(getSumOfCategory(results));
 
@@ -67,7 +62,6 @@ public class CategoryActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(),adapter.getItem(position).getExpense().toString(),Toast.LENGTH_LONG).show();
                 for (int i=0; i<records.length; i++){
                     removeItemHelper.add(records[i]);
                 }
@@ -78,7 +72,6 @@ public class CategoryActivity extends AppCompatActivity {
                             adapter.getItem(position).getDatum().equals(removeItemHelper.get(j).split(",")[3])){
                         removeItemHelper.remove(j);
                     }
-                        //record = resultCategory+","+resultComment+","+String.valueOf(resultPrice)+","+sdf.format(Calendar.getInstance().getTime());
                 }
                 subRecords = new String[removeItemHelper.size()];
                 for (int k=0; k<removeItemHelper.size(); k++){
@@ -93,12 +86,6 @@ public class CategoryActivity extends AppCompatActivity {
                     newItem.putString("records",sb.toString());
                     newItem.apply();
                 }
-
-                /*records = preferences.getString("records",start).split("@");
-                recordsFilteredByCategory(records);
-                valueName.setText(name);
-                valueExpense.setText(getSumOfCategory(results));
-                initList(results);*/
                 startActivity(new Intent(CategoryActivity.this,MainActivity.class));
                 return false;
             }
@@ -116,10 +103,8 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void recordsFilteredByCategory(String[] inputs) {
-        //subResultContainer = new String[inputs.length];
         for (int i=0; i<inputs.length; i++){
             subResult = inputs[i].split(",");
-            //category,comment,price,datum
             if (subResult[0].equals(name)){
                 subResultContainer.add(subResult[2]+";"+subResult[3]+";"+subResult[1]);//price-datum-comment
             }
@@ -146,7 +131,6 @@ public class CategoryActivity extends AppCompatActivity {
     public ArrayList<Item> generateData(ArrayList<String> list){
         ArrayList<Item> elements = new ArrayList<Item>();
         for (int i=0; i<list.size(); i++){
-            //elements.add(new Item(separator(list.get(i).split(";")[0]),list.get(i).split(";")[1],list.get(i).split(";")[2]));
             elements.add(0,new Item(separator(list.get(i).split(";")[0]),list.get(i).split(";")[1],list.get(i).split(";")[2]));
         }
         return elements;

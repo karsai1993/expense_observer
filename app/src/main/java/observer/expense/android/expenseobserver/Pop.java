@@ -19,9 +19,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by Edina on 2017. 01. 26..
- */
 public class Pop extends Activity{
     SharedPreferences preferences;
     SharedPreferences.Editor newItem;
@@ -78,21 +75,5 @@ public class Pop extends Activity{
 
     public void clearAllRecords(){
         newItem.remove("records").commit();
-        /*records = preferences.getString("records",start).split("@");
-        initList(records);*/
     }
-
-    /*public void initList(String [] strings){
-        listItems = new ArrayList<>(Arrays.asList(strings));
-        adapter = new MyAdapter(this, generateDefaultData(listItems));
-        listOfCategoriesAndPrices.setAdapter(adapter);
-    }
-
-    public ArrayList<Item> generateDefaultData(ArrayList<String> list){
-        ArrayList<Item> elements = new ArrayList<Item>();
-        for (int i=0; i<list.size(); i++){
-            elements.add(new Item(list.get(i),""));
-        }
-        return elements;
-    }*/
 }

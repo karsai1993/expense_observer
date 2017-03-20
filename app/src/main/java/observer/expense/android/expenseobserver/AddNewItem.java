@@ -25,10 +25,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-/**
- * Created by Edina on 2017. 01. 21..
- */
-
 public class AddNewItem extends AppCompatActivity {
     String [] items;
     String [] splittedPrice;

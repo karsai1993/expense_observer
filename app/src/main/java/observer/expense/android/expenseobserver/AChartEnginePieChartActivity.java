@@ -43,12 +43,7 @@ public class AChartEnginePieChartActivity extends AppCompatActivity {
     ArrayList<String> listItems;
     int allPaidMoney = 0;
     Random rnd;
-
-    /*private static int[] COLORS = new int[] { Color.GREEN, Color.BLUE,Color.MAGENTA, Color.CYAN};
-
-    private static double[] VALUES = new double[] { 10, 11, 12, 13 };
-
-    private static String[] NAME_LIST = new String[] { "A", "B", "C", "D" };*/
+	
     private static int[] COLORS;
     private static int[] VALUES;
     private static String[] NAME_LIST;
@@ -71,11 +66,8 @@ public class AChartEnginePieChartActivity extends AppCompatActivity {
         NAME_LIST = new String[listItems.size()];
         generateData(listItems);
 
-        //mRenderer.setApplyBackgroundColor(true);
-        //mRenderer.setBackgroundColor(Color.argb(100, 50, 50, 50));
         mRenderer.setChartTitleTextSize(20);
         mRenderer.setShowLabels(false);
-        //mRenderer.setLabelsTextSize(15);
         mRenderer.setLegendTextSize(15);
         mRenderer.setMargins(new int[] { 20, 30, 15, 0 });
         mRenderer.setZoomButtonsVisible(true);
@@ -102,32 +94,6 @@ public class AChartEnginePieChartActivity extends AppCompatActivity {
             mChartView = ChartFactory.getPieChartView(this, mSeries, mRenderer);
             mRenderer.setClickEnabled(true);
             mRenderer.setSelectableBuffer(10);
-
-            /*mChartView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
-
-                    if (seriesSelection != null) {
-                        Toast.makeText(AChartEnginePieChartActivity.this,"Chart element data point index "+ (seriesSelection.getXValue()) + " was clicked" + " point value="+ seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });*/
-
-            /*mChartView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
-                    if (seriesSelection == null) {
-                        Toast.makeText(AChartEnginePieChartActivity.this,"No chart element was long pressed", Toast.LENGTH_SHORT);
-                        return false; 
-                    }
-                    else {
-                        Toast.makeText(AChartEnginePieChartActivity.this,"Chart element data point index "+ seriesSelection.getPointIndex()+ " was long pressed",Toast.LENGTH_SHORT);
-                        return true;       
-                    }
-                }
-            });*/
             layout.addView(mChartView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
         }
         else {
@@ -136,18 +102,12 @@ public class AChartEnginePieChartActivity extends AppCompatActivity {
     }
     public void generateData(ArrayList<String> list){
         for (int i=0; i<list.size(); i++){
-            //elements.add(new Item(list.get(i).split("-")[0],separator(list.get(i).split("-")[1])));
             allPaidMoney += Integer.parseInt(list.get(i).split("-")[1]);
         }
         for (int i=0; i<list.size(); i++){
-            /*COLORS = new int[listItems.size()];
-            VALUES = new double[listItems.size()];
-            NAME_LIST = new String[listItems.size()];*/
-            //elements.add(new Item(list.get(i).split("-")[0],separator(list.get(i).split("-")[1])));
             NAME_LIST[i] = list.get(i).split("-")[0];
             VALUES[i] = Integer.parseInt(list.get(i).split("-")[1]);
             rnd = new Random();
-            //int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
             COLORS[i] = Color.rgb(rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255));
         }
     }
