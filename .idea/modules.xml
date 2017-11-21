@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ExpenseObserver.iml" filepath="$PROJECT_DIR$/ExpenseObserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/expense_observer-master.iml" filepath="$PROJECT_DIR$/expense_observer-master.iml" />
     </modules>
   </component>
 </project>

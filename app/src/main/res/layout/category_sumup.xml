@@ -37,7 +37,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Expense [HUF]: "
+            android:id="@+id/tv_expense_detail"
             style="@style/TableCategories"/>
         <TextView
             android:layout_width="match_parent"

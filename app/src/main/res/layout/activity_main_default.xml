@@ -25,13 +25,36 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello there!\nClick to button below to start the observation!"
+        android:text="Hello there!\nLet's start to observe your purchases!"
         android:textColor="@color/white"
         android:gravity="center"
         android:id="@+id/welcome"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:textSize="20sp"
         android:textStyle="bold" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type the currency..."
+        android:textColor="@color/addbuttonbackground_normal"
+        android:textColorHint="@color/addbuttonbackground_normal"
+        android:gravity="center"
+        android:id="@+id/ed_currency"
+        android:layout_below="@+id/welcome"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="It cannot contain number!\nExample: $,€,USD,EUR"
+        android:textColor="@color/yes"
+        android:gravity="center"
+        android:id="@+id/error"
+        android:layout_below="@+id/ed_currency"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +63,8 @@
         android:background="@drawable/add_button_handler"
         android:text="START"
         android:textColor="@color/white"
-        android:id="@+id/start"/>
+        android:id="@+id/start"
+        android:visibility="invisible"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

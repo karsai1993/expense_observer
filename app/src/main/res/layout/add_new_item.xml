@@ -46,7 +46,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/price"
             android:layout_alignParentBottom="true"
-            android:hint="Price [HUF]"
             android:textColor="@color/item_exp"
             android:textColorHint="@color/item_exp"
             android:inputType="number"/>

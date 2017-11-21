@@ -3,6 +3,8 @@ package observer.expense.android.expenseobserver;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ public class MyCategoryAdapter extends ArrayAdapter<Item> {
 
     private final Context context;
     private final ArrayList<Item> itemsArrayList;
+    SharedPreferences preferences;
 
     public MyCategoryAdapter(Context context, ArrayList<Item> itemsArrayList) {
 
@@ -43,7 +46,8 @@ public class MyCategoryAdapter extends ArrayAdapter<Item> {
         TextView commentView = (TextView) rowView.findViewById(R.id.comment_value);
 
         // 4. Set the text for textView
-        priceView.setText(itemsArrayList.get(position).getExpense()+" HUF");
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        priceView.setText(itemsArrayList.get(position).getExpense()+" "+preferences.getString("currency","unit"));
         datumView.setText(itemsArrayList.get(position).getDatum());
         commentView.setText(itemsArrayList.get(position).getComment());
 

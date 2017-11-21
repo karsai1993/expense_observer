@@ -6,16 +6,21 @@ import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
     Boolean needOnlyStoredIconInActionBar = false;
     int sum;
     int amount = 0;
+    EditText currencyEditText;
+    TextView mError;
+    TextView mExpenseTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +86,47 @@ public class MainActivity extends AppCompatActivity {
             needOnlyStoredIconInActionBar = true;
             setContentView(R.layout.activity_main_default);
             startBtn = (Button)findViewById(R.id.start);
+            currencyEditText = (EditText)findViewById(R.id.ed_currency);
+            mError = (TextView)findViewById(R.id.error);
+            currencyEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    startBtn.setVisibility(View.INVISIBLE);
+                    mError.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (s.toString().equals("")) {
+                        startBtn.setVisibility(View.INVISIBLE);
+                        mError.setVisibility(View.INVISIBLE);
+                    } else {
+                        char [] inputChars = s.toString().toCharArray();
+                        Boolean stopRequested = false;
+                        for (char c : inputChars) {
+                            if (String.valueOf(c).matches("[1-9]+")) {
+                                stopRequested = true;
+                            }
+                        }
+                        if (!stopRequested) {
+                            startBtn.setVisibility(View.VISIBLE);
+                            mError.setVisibility(View.INVISIBLE);
+                        } else {
+                            startBtn.setVisibility(View.INVISIBLE);
+                            mError.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            });
             startBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(MainActivity.this,AddNewItem.class));
                     newItem.putString("startTime",sdf.format(Calendar.getInstance().getTime()));
+                    newItem.putString("currency",currencyEditText.getText().toString());
                     newItem.apply();
                 }
             });
@@ -92,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().show();
             needOnlyStoredIconInActionBar = false;
             setContentView(R.layout.activity_main);
+            mExpenseTextView = (TextView)findViewById(R.id.tv_expense_header);
+            mExpenseTextView.setText("Expense ["+preferences.getString("currency","unit")+"]");
             listOfCategoriesAndPrices = (ListView)findViewById(R.id.maincategorylist);
             listOfCategoriesAndPrices.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -123,13 +169,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             allExpense = (TextView)findViewById(R.id.all_expense);
-            allExpense.setText(getSumOfCategory(modifiedRecords)+" HUF");
+            allExpense.setText(getSumOfCategory(modifiedRecords)+" "+preferences.getString("currency","unit"));
 
             startDate = (TextView)findViewById(R.id.startTimeValue);
             startDate.setText(preferences.getString("startTime","ERROR"));
         }
 
     }
+    private Boolean isNumber(String input){
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     private String getSumOfCategory(String[] data){
         for (int i=0; i<data.length; i++){
             amount += Integer.parseInt(data[i].split("-")[1]);
@@ -155,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.showcharticon:
                 startActivity(new Intent(MainActivity.this,AChartEnginePieChartActivity.class));
                 return true;
-            case R.id.saveicon:
+            /*case R.id.saveicon:
                 storedRecordData.add(preferences.getString("startTime","ERROR")+","+sdf.format(Calendar.getInstance().getTime())+","+preferences.getString("records",start));
                 dataStore = new String[storedRecordData.size()];
                 for (int i=0; i<storedRecordData.size(); i++){
@@ -173,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.storeicon:
                 startActivity(new Intent(MainActivity.this,StoreActivity.class));
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Expense [HUF]"
+            android:id="@+id/tv_expense_header"
             style="@style/TableCategories"
             android:paddingBottom="10dp"/>
         <!--TextView

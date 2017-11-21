@@ -107,6 +107,7 @@ public class AddNewItem extends AppCompatActivity {
             }
         });
         editPrice = (EditText)findViewById(R.id.price);
+        editPrice.setHint("Price ["+preferences.getString("currency","unit")+"]");
         editPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

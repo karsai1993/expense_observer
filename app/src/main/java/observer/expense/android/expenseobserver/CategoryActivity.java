@@ -37,6 +37,7 @@ public class CategoryActivity extends AppCompatActivity {
     ArrayList<String> subResultContainer = new ArrayList<String>();
     String start = "blabla";
     int sum = 0;
+    TextView mExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,8 @@ public class CategoryActivity extends AppCompatActivity {
         valueName.setText(name);
         valueExpense = (TextView)findViewById(R.id.expense_value);
         valueExpense.setText(getSumOfCategory(results));
+        mExpense = (TextView)findViewById(R.id.tv_expense_detail);
+        mExpense.setText("Expense ["+preferences.getString("currency","unit")+"]:");
 
         listView = (ListView)findViewById(R.id.categoryitems);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

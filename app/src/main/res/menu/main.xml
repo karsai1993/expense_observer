@@ -7,16 +7,16 @@
         app:showAsAction="always"
         android:title="SHOW">
     </item>
-    <item
+    <!--item
         android:id="@+id/storeicon"
         android:icon="@drawable/ic_action_storage"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:title="SHOW">
     </item>
     <item
         android:id="@+id/saveicon"
         android:icon="@drawable/ic_action_save"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:title="SHOW">
-    </item>
+    </item-->
 </menu>
